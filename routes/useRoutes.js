@@ -1,5 +1,5 @@
 import express from 'express';
-import {changeUserPassword, loggedUser, sendResetPasswordEmail, userlogin, userRegistration} from '../controllers/userController.js';
+import {changeUserPassword, loggedUser, sendResetPasswordEmail, userlogin, userPasswordReset, userRegistration} from '../controllers/userController.js';
 import checkUserAuth from '../middlewares/auth_middleware.js';
 
 const router = express.Router();
@@ -13,6 +13,7 @@ router.use('/loggeduser', checkUserAuth);
 router.post('/register', userRegistration);
 router.post('/login', userlogin);
 router.post('/send-reset-password-email', sendResetPasswordEmail);
+router.post('/reset-password/:id/:token', userPasswordReset);
 
 
 // Protected Routes
